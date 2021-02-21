@@ -1,6 +1,8 @@
 module.exports = {
     name: "gstart",
     category: "Giveaway",
+    description: "Command to start a giveaway",
+    requiredPermissions: ["ADMINISTRATOR"],
     callback: ({ message, args, client }) => {
         message.delete().then(() => {
             const { guild, channel } = message;

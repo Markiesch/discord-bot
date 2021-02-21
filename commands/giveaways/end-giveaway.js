@@ -1,6 +1,8 @@
 module.exports = {
     name: "gend",
     category: "Giveaway",
+    description: "Command to end a giveaway",
+    requiredPermissions: ["ADMINISTRATOR"],
     callback: ({ message }) => {
         message.delete().then(() => {
             const { channel } = message;

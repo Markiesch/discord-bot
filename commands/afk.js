@@ -1,5 +1,6 @@
 module.exports = {
     category: "Utility",
+    description: "Moves the mentioned user to the servers AFK Voice Channel",
     callback: ({ message }) => {
         message.delete();
         let tagged = false;
