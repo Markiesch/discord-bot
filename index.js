@@ -12,24 +12,26 @@ client.on("ready", () => {
     new WOKCommands(client, {
         commandsDir: "commands",
         featureDir: "features",
-    }).setCategorySettings([
-        {
-            name: "Fun",
-            emoji: "🎮",
-        },
-        {
-            name: "Economy",
-            emoji: "💸",
-        },
-        {
-            // You can change the default emojis as well
-            name: "Configuration",
-            emoji: "🚧",
-            // You can also hide a category from the help menu
-            // Admins bypass this
-            hidden: true,
-        },
-    ]);
+    })
+        .setDefaultPrefix("$")
+        .setCategorySettings([
+            {
+                name: "Fun",
+                emoji: "🎮",
+            },
+            {
+                name: "Economy",
+                emoji: "💸",
+            },
+            {
+                // You can change the default emojis as well
+                name: "Configuration",
+                emoji: "🚧",
+                // You can also hide a category from the help menu
+                // Admins bypass this
+                hidden: true,
+            },
+        ]);
 });
 
 client.login(process.env.TOKEN);

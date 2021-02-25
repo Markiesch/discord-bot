@@ -3,10 +3,8 @@ const ignoredChannels = ["800722874045300763", "800722874045300765"];
 
 module.exports = (client) => {
     client.on("messageDelete", async (messageDelete) => {
-        if (messageDelete.guild.id != "800722873576587285") return console.log("Wrong Guild");
-        if (ignoredChannels.includes(messageDelete.channel.id)) {
-            return console.log("Ignored channel");
-        }
+        if (messageDelete.guild.id != "800722873576587285") return;
+        if (ignoredChannels.includes(messageDelete.channel.id)) return;
 
         const channelID = "800722874045300765";
         const channel = messageDelete.guild.channels.cache.get(channelID);

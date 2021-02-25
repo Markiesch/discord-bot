@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-
 const ignoredChannels = ["800722874045300763"];
 
 module.exports = (client, instance, guild) => {

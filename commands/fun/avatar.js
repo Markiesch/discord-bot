@@ -17,7 +17,6 @@ module.exports = {
             )
             .setImage(target.displayAvatarURL({ dynamic: true }));
 
-        console.log(target.avatarURL());
         return message.channel.send(avatar);
     },
 };
