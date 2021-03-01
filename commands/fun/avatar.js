@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports = {
     category: "Fun",
-    cooldown: "5s",
+    cooldown: "3s",
     description: "Test command, to test if the bot is running or not",
     callback: ({ message }) => {
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
