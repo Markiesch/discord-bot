@@ -1,6 +1,7 @@
 module.exports = {
     name: "gend",
     category: "Giveaway",
+    guildOnly: true,
     description: "Command to end a giveaway",
     requiredPermissions: ["ADMINISTRATOR"],
     callback: ({ message }) => {
