@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 const ignoredChannels = ["800722874045300763"];
 
-module.exports = (client, instance, guild) => {
+module.exports = (client) => {
     client.on("messageUpdate", (oldMessage, newMessage) => {
-        if (newMessage.author.bot) return;
+        if (newMessage.author.bot || oldMessage.author.bot) return;
         if (newMessage.guild.id != "800722873576587285") return;
 
         const channelID = "800722874045300765";
