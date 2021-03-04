@@ -1,5 +1,6 @@
 module.exports = {
     category: "Utility",
+    guildOnly: true,
     description: "Moves the mentioned user to the servers AFK Voice Channel",
     callback: ({ message }) => {
         message.delete();
