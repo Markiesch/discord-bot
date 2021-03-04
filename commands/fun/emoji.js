@@ -3,7 +3,8 @@ const validSymbols = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 
 module.exports = {
     category: "Fun",
-    description: "Converts all your characters into emojis (if possible)",
+    cooldown: "3s",
+    description: "Makes emoji text, thanks I hate it",
     callback: ({ message, args }) => {
         if (args.includes("--delete")) {
             const index = args.indexOf("--delete");

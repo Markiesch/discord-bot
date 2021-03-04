@@ -1,8 +1,8 @@
-const Discord = require("discord.js");
-
 module.exports = {
     category: "Fun",
-    description: "Test command, to test if the bot is running or not",
+    cooldown: "3s",
+    expectedArgs: "!roll [maxAmount]",
+    description: "Randomly picks a number between 0-100 if there is no number spicified",
     callback: ({ message, args }) => {
         let maxNumber = 100;
 
