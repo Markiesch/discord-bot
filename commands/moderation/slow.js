@@ -1,13 +1,13 @@
 module.exports = {
     category: "Utility",
-    description: "Moves the mentioned user to the servers AFK Voice Channel",
+    description: "Sets the number of messages you can post each second in a specific channel",
     minArgs: 1,
     expectedArgs: "<duration> [reason]",
     syntaxError: `Incorrect Usage! Use {PREFIX}{COMMAND} {ARGUMENTS}`,
     guildOnly: true,
     requiredPermissions: ["ADMINISTRATOR"],
     callback: ({ message, args }) => {
-        const { channel } = message;
+        const channel = message.mentions.channels.first() || message.channel;
 
         if (!args) {
             message.reply("Please provide a duration and a reason");
@@ -20,15 +20,10 @@ module.exports = {
         }
 
         if (isNaN(duration)) {
-            message.reply('Please provide either a number of seconds or the word "off"');
-            return;
+            return message.reply('Please provide either a number of seconds or the word "off"');
         }
 
-        //['testing','hello','world']
-        //.join(' ')
-        //testing hello world
-
         channel.setRateLimitPerUser(duration, args.join(" "));
-        message.reply(`The slowmode for this channel has been set to ${duration}`);
+        channel.send(`The slowmode for this channel has been set to ${duration}`);
     },
 };
