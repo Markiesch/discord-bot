@@ -7,12 +7,13 @@ module.exports = {
     callback: ({ message, guild }) => {
         const targetChannel = message.mentions.channels.first() || message.channel;
 
-        const everyoneID = message.guild.roles.everyone.id;
+        // Guild ID is the same as the everyone role ID
+        const everyoneID = message.guild.id;
 
         targetChannel.updateOverwrite(everyoneID, {
             SEND_MESSAGES: false,
         });
 
-        targetChannel.send(`This channel has been locked :lock:`);
+        targetChannel.send(`**${targetChannel.name}** has been locked :lock:`);
     },
 };
