@@ -1,4 +1,6 @@
+const { MessageEmbed } = require("discord.js");
 const path = require("path");
+const maxSize = 256000; // Max file size in bites
 
 module.exports = {
     category: "Utility",
@@ -8,7 +10,15 @@ module.exports = {
     requiredPermissions: ["MANAGE_EMOJIS"],
     callback: ({ message, args, text }) => {
         const image = message.attachments.first();
+
         if (!image) return message.channel.send("Please attach a image to your message!");
+
+        const errMessageSize = new MessageEmbed().setDescription(
+            `<:failed:818800981001240617> The uploaded file is to big for a emoji \n\nMax Size: ${maxSize}\n[Tinyfy your image](https://tinypng.com/)`
+        );
+        if (image.size >= maxSize) {
+            return message.channel.send(errMessageSize);
+        }
 
         const validFiles = [".png", ".jpeg", ".webp", ".jpg", ".gif"];
         if (!validFiles.includes(path.parse(image.name).ext.toLocaleLowerCase())) {
