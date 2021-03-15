@@ -1,5 +1,5 @@
 module.exports = {
-    category: "Fun",
+    category: "misc",
     cooldown: "3s",
     description: "Test command, to test if the bot is running or not",
     callback: ({ message, client }) => {

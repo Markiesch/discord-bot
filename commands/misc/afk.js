@@ -2,19 +2,12 @@ module.exports = {
     category: "Utility",
     guildOnly: true,
     description: "Moves the mentioned user to the servers AFK Voice Channel",
-    callback: ({ message }) => {
+    callback: ({ message, args }) => {
         message.delete();
-        let tagged = false;
-        let target = message.mentions.users.first() || message.member;
-
-        // Checks if user tagged another user
-        if (message.mentions.users.first()) {
-            tagged = true;
-        }
+        let target = message.mentions.users.first() || message.guild.members.cache.get(args[0]) || message.member;
 
         // Converts tagged user into author if he does not have the permssion to move members
-        if (tagged && !message.member.hasPermission("MOVE_MEMBERS")) {
-            console.log("no permission");
+        if (!message.member.hasPermission("MOVE_MEMBERS")) {
             target = message.member;
         }
 
