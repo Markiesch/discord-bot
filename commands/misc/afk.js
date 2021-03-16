@@ -1,5 +1,5 @@
 module.exports = {
-    category: "Utility",
+    category: "misc",
     guildOnly: true,
     description: "Moves the mentioned user to the servers AFK Voice Channel",
     callback: ({ message, args }) => {

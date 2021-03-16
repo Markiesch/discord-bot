@@ -1,15 +1,13 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    guildOnly: true,
     category: "misc",
     cooldown: "3s",
-    expectedArgs: "<role>",
-    description: "Deleted the mentioned role",
+    guildOnly: true,
+    expectedArgs: "<name>",
+    description: "Create a role",
     requiredPermissions: ["ADMINISTRATOR"],
     callback: async ({ message, args }) => {
-        const role = message.mentions.roles.first() || message.guild.roles.cache.find((role) => role.name == args[0]) || message.guild.roles.cache.get(args[0]);
-
         const notFound = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> I couldn't find the role **${args[0]}**`);
 
         if (!role) return message.channel.send(notFound);

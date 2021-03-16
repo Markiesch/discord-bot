@@ -6,7 +6,6 @@ const responses = [
     "Concentrate and ask again",
     "Don’t count on it",
     "It is certain",
-    "t is decidedly so",
     "Most likely",
     "My reply is no",
     "My sources say no",

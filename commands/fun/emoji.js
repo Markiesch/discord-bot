@@ -47,6 +47,6 @@ module.exports = {
         }
         const EmojiEmbed = new Discord.MessageEmbed().setDescription(emojiText);
 
-        message.channel.send(EmojiEmbed);
+        return message.channel.send(EmojiEmbed);
     },
 };

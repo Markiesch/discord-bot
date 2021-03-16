@@ -12,8 +12,9 @@ client.on("ready", () => {
     new WOKCommands(client, {
         commandsDir: "commands",
         featureDir: "features",
+        testServers: "801905744680452097",
     })
-        .setDefaultPrefix("$")
+        .setDefaultPrefix("%")
         .setCategorySettings([
             {
                 name: "Fun",
