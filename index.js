@@ -14,7 +14,7 @@ client.on("ready", () => {
         featureDir: "features",
         testServers: "801905744680452097",
     })
-        .setDefaultPrefix("$")
+        .setDefaultPrefix("?")
         .setCategorySettings([
             {
                 name: "Fun",
