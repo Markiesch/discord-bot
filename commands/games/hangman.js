@@ -1148,7 +1148,8 @@ module.exports = {
         const player = message.author.username;
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
-        const randomWord = words[Math.floor(Math.random() * words.length)];
+        // const randomWord = words[Math.floor(Math.random() * words.length)];
+        const randomWord = "baa";
         const word = [...randomWord];
         let guessedLetters = [];
         let format = [];
@@ -1177,7 +1178,7 @@ module.exports = {
                     "   \n|     \n|__________\n\n" +
                     `${format.join(" ")}` +
                     "```" +
-                    `Wrong words: ${wrongs}` +
+                    `Wrong letters: ${wrongs}` +
                     "\n\n**How To Play**\nType letters after this message to guess a letter!"
             );
 
@@ -1191,14 +1192,14 @@ module.exports = {
             });
 
             collector.on("collect", (m) => {
-                if (!message.channel.type == "dm") m.delete();
                 guessedLetters.push(m.content.toLowerCase());
                 if (!word.includes(m.content.toLowerCase())) {
                     wrongs++;
                 } else {
                     for (let i = 0; i < word.length; i++) {
-                        const index = word.indexOf(m.content.toLowerCase());
-                        format[index] = word[index];
+                        if (m.content.toLowerCase() == word[i]) {
+                            format[i] = word[i];
+                        }
                     }
                 }
 
@@ -1220,7 +1221,7 @@ module.exports = {
                             "   \n|     \n|__________\n\n" +
                             `${format.join(" ")}` +
                             "```" +
-                            `Wrong words: ${wrongs}` +
+                            `Wrong letters: ${wrongs}` +
                             "\n\n**How To Play**\nType letters after this message to guess a letter!"
                     )
                 );
@@ -1252,7 +1253,7 @@ module.exports = {
                             "   \n|     \n|__________\n\n" +
                             `${format.join(" ")}` +
                             "```" +
-                            `\nWrong words: ${wrongs}`
+                            `\nWrong letters: ${wrongs}`
                     )
                 );
             });
