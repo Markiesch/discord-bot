@@ -6,12 +6,17 @@ module.exports = {
     cooldown: "3s",
     guildOnly: true,
     description: "Play Hangman!",
-    callback: ({ message, client }) => {
+    callback: ({ message, args }) => {
         const player = message.author.username;
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
-        const randomWord = words[Math.floor(Math.random() * words.length)];
-        // const randomWord = "baa";
+        let randomWord;
+        if (args) {
+            randomWord = args[0];
+            message.delete();
+        } else {
+            randomWord = words[Math.floor(Math.random() * words.length)];
+        }
         const word = [...randomWord];
         let guessedLetters = [];
         let format = [];
