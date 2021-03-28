@@ -85,7 +85,11 @@ module.exports = {
             const game = games[id];
 
             if (game && game.currentWord && !member.user.bot) {
-                message.delete();
+                try {
+                    message.delete();
+                } catch (err) {
+                    console.log(err);
+                }
 
                 if (game.stage === "IN_GAME" && content.toLowerCase() === game.currentWord.toLowerCase()) {
                     game.currentWord = null;
@@ -112,7 +116,11 @@ module.exports = {
         const { channel } = message;
 
         gameLoop();
-        message.delete();
+        try {
+            message.delete();
+        } catch (err) {
+            console.log(err);
+        }
         channel.send("Preparing game...").then((message) => {
             games[channel.id] = {
                 message,
