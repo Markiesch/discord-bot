@@ -9,23 +9,14 @@ module.exports = {
     callback: ({ message, args }) => {
         const player = message.author.username;
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        let randomWord = words[Math.floor(Math.random() * words.length)];
+        if (args.length >= 1) randomWord = args[0];
 
-        let randomWord;
-        if (args) {
-            randomWord = args[0];
-            message.delete();
-        } else {
-            randomWord = words[Math.floor(Math.random() * words.length)];
-        }
         const word = [...randomWord];
         let guessedLetters = [];
         let format = [];
-        for (let x = 0; x < word.length; x++) {
-            format.push("_");
-        }
+        for (let x = 0; x < word.length; x++) format.push("_");
         let wrongs = 0;
-
-        // const ownerIcon = client.guilds.resolve("801905744680452097").members.resolve("462181957078614017").user.avatarURL();
 
         const gameMessage = new MessageEmbed()
             .setColor(randomColor)
@@ -50,23 +41,19 @@ module.exports = {
             );
 
         message.channel.send(gameMessage).then((msg) => {
-            const max = word.length + 5;
             const filter = (m) => m.content.length == 1;
-            // m.author.id == message.author.id &&
             const collector = new MessageCollector(message.channel, filter, {
-                max: max,
+                max: word.length + 5,
                 time: 1000 * 60 * 10, //10 minutes
             });
 
             collector.on("collect", (m) => {
                 guessedLetters.push(m.content.toLowerCase());
-                if (!word.includes(m.content.toLowerCase())) {
-                    wrongs++;
-                } else {
-                    for (let i = 0; i < word.length; i++) {
-                        if (m.content.toLowerCase() == word[i]) {
-                            format[i] = word[i];
-                        }
+                if (!word.includes(m.content.toLowerCase())) wrongs++;
+
+                for (let i = 0; i < word.length; i++) {
+                    if (m.content.toLowerCase() == word[i]) {
+                        format[i] = word[i];
                     }
                 }
 
@@ -94,7 +81,7 @@ module.exports = {
                 );
             });
 
-            collector.on("end", (collected) => {
+            collector.on("end", () => {
                 let message;
                 if (wrongs == 5) {
                     message = `**${player}** has lost! \n\n The word was: \n${randomWord.toUpperCase()}`;
