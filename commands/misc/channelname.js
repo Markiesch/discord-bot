@@ -3,7 +3,9 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     category: "misc",
     cooldown: "3s",
+    guildOnly: true,
     description: "Change the channel name",
+    aliases: ["channelname", "setchannelname"],
     requiredPermissions: ["MANAGE_CHANNELS"],
     callback: ({ message, args }) => {
         const noArgs = new MessageEmbed()
@@ -18,8 +20,10 @@ module.exports = {
         const targetChannel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]) || message.channel;
 
         if (targetChannel == message.mentions.channels.first()) {
+            console.log(args);
             const index = args.indexOf(message.mentions.channels.first());
             args.splice(index - 1, 1);
+            console.log(args);
         }
 
         if (targetChannel == message.guild.channels.cache.get(args[0])) {
@@ -40,6 +44,8 @@ module.exports = {
 
         const changedNameEmbed = new MessageEmbed().setColor("#43b581").setDescription(`<:succes:818800870274891827> Changed **${name}** to **${newName}**`);
 
+        console.log(newName);
+        console.log(targetChannel);
         targetChannel.setName(newName);
         message.channel.send(changedNameEmbed);
     },
