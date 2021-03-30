@@ -7,8 +7,7 @@ module.exports = {
     description: "Try guessing a word in the wrong order",
     callback: ({ message }) => {
         let attempts = 0;
-        // const word = words[Math.floor(Math.random() * words.length)];
-        const word = "test";
+        const word = words[Math.floor(Math.random() * words.length)];
         const shuffled = word
             .split("")
             .sort(() => {
