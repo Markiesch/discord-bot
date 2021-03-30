@@ -10,7 +10,14 @@ module.exports = {
         const player = message.author.username;
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
         let randomWord = words[Math.floor(Math.random() * words.length)];
-        if (args.length >= 1) randomWord = args[0];
+        if (args.length >= 1) {
+            randomWord = args[0];
+            try {
+                message.delete();
+            } catch (err) {
+                console.log(err);
+            }
+        }
 
         const word = [...randomWord];
         let guessedLetters = [];
