@@ -7,7 +7,7 @@ module.exports = {
     guildOnly: true,
     expectedArgs: "[@user] <nickname>",
     description: "Change nicknames",
-    callback: ({ message, args, guild }) => {
+    callback: ({ message, args }) => {
         let target = message.mentions.members.first() || message.guild.members.cache.find((m) => m.name == args[0]) || message.guild.members.cache.get(args[0]);
 
         if (target) {
