@@ -1,8 +1,11 @@
 const Discord = require("discord.js");
 
 module.exports = {
+    slash: "both",
+    testOnly: true,
     category: "Fun",
     cooldown: "3s",
+    expectedArgs: "[User Tag]",
     description: "Gives you a member's avatar in different formats",
     callback: ({ message }) => {
         const target = message.mentions.users.first() || message.author;
@@ -15,6 +18,8 @@ module.exports = {
             )
             .setImage(target.displayAvatarURL({ dynamic: true }));
 
-        return message.channel.send(avatar);
+        if (message) return message.channel.send(avatar);
+
+        return avatar;
     },
 };
