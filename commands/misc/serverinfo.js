@@ -6,14 +6,15 @@ module.exports = {
     guildOnly: true,
     description: "Get information from the guild",
     callback: ({ message, client }) => {
-        return console.log(message.guild.explicitContentFilter);
-
         const { guild } = message;
-        const { name, region, memberCount, owner, verificationLevel, id, explicitContentFilterLevel } = guild;
+        const { name, region, memberCount, owner, verificationLevel, id, explicitContentFilter } = guild;
         const icon = guild.iconURL();
 
         const textChannels = message.guild.channels.cache.filter((channel) => channel.type === "text").size;
         const voiceChannels = message.guild.channels.cache.filter((channel) => channel.type === "voice").size;
+
+        const members = guild.members.cache.filter((member) => !member.user.bot).size;
+        const bots = memberCount - members;
 
         const embed = new MessageEmbed()
             .setTitle(`Server info for "${name}"`)
@@ -36,11 +37,16 @@ module.exports = {
                 },
                 {
                     name: "Info",
-                    value: `${explicitContentFilterLevel} ${verificationLevel}`,
+                    value: `${
+                        explicitContentFilter.toUpperCase() == "MEMBERS_WITHOUT_ROLES" ? "<:succes:818800870274891827>" : "<:failed:818800981001240617>"
+                    } Scanning Images\nVerification Level: ${verificationLevel.toLowerCase()}`,
+                    inline: true,
                 },
 
                 {
-                    name: "AFK Timeout",
+                    name: "Members",
+                    value: `Total: ${memberCount}\nHumans: ${members}\nBots: ${bots}`,
+                    inline: true,
                 }
             )
             .setFooter(`ID: ${id}`)
