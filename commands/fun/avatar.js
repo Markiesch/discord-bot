@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    slash: "both",
-    testOnly: true,
     category: "Fun",
     cooldown: "3s",
     expectedArgs: "[User Tag]",
