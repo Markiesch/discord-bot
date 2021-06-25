@@ -2,11 +2,9 @@ const path = require("path");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "Utility",
-    description: "Add emojis without opening any menu's",
     guildOnly: true,
     requiredPermissions: ["MANAGE_GUILD"],
-    callback: ({ message }) => {
+    execute(message) {
         const image = message.attachments.first();
         if (!image) return message.channel.send("Please attach a image to your message!");
 

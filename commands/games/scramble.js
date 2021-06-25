@@ -2,10 +2,8 @@ const { MessageCollector } = require("discord.js");
 const { words } = require("../../util/fast-type-words.json");
 
 module.exports = {
-    category: "Fun",
-    cooldown: "3s",
-    description: "Try guessing a word in the wrong order",
-    callback: ({ message }) => {
+    description: "Try guessing a word that's in the wrong order",
+    execute(message) {
         let attempts = 0;
         const word = words[Math.floor(Math.random() * words.length)];
         const shuffled = word

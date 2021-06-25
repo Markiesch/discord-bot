@@ -1,12 +1,8 @@
 module.exports = {
-    category: "Utility",
-    description: "Sets the number of messages you can post each second in a specific channel",
-    minArgs: 1,
-    expectedArgs: "<duration> [reason]",
-    syntaxError: `Incorrect Usage! Use {PREFIX}{COMMAND} {ARGUMENTS}`,
+    description: "Sets the number seconds you need to wait before users can send a message again",
+    args: true,
     guildOnly: true,
-    requiredPermissions: ["ADMINISTRATOR"],
-    callback: ({ message, args }) => {
+    execute(message, args) {
         const channel = message.mentions.channels.first() || message.channel;
 
         if (!args) {

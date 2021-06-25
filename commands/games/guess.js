@@ -1,14 +1,13 @@
 const { MessageEmbed, MessageCollector } = require("discord.js");
 
 module.exports = {
-    category: "Fun",
-    cooldown: "3s",
-    callback: ({ message, args }) => {
+    execute(message, args) {
         let maxNumber = 20;
         let maxGuesses = 4;
         let maxHints = 2;
         let number = Math.floor(Math.random() * maxNumber);
         let latestNumber;
+        let attempts;
 
         message.channel
             .send(

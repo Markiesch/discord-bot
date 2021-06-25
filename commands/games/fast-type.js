@@ -75,11 +75,9 @@ const gameLoop = () => {
 };
 
 module.exports = {
-    category: "Fun",
-    cooldown: "3s",
     description: "Gives you a member's avatar in different formats",
-    callback: async ({ message, client }) => {
-        client.on("message", (message) => {
+    execute(message) {
+        message.client.on("message", (message) => {
             const { channel, content, member } = message;
             const { id } = channel;
             const game = games[id];

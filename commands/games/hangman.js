@@ -2,11 +2,8 @@ const { MessageEmbed, MessageCollector } = require("discord.js");
 const { words } = require("../../util/fast-type-words.json");
 
 module.exports = {
-    category: "games",
-    cooldown: "3s",
-    guildOnly: true,
     description: "Play Hangman!",
-    callback: ({ message, args }) => {
+    execute(message, args) {
         const player = message.author.username;
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
         let randomWord = words[Math.floor(Math.random() * words.length)];

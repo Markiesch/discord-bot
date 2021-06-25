@@ -1,9 +1,6 @@
 module.exports = {
-    category: "Fun",
-    cooldown: "3s",
-    expectedArgs: "!roll [maxAmount]",
     description: "Randomly picks a number between 0-100 if there is no number spicified",
-    callback: ({ message, args }) => {
+    execute(message, args) {
         let maxNumber = 100;
 
         if (args[0]) {

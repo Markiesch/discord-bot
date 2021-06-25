@@ -3,12 +3,11 @@ const path = require("path");
 const maxSize = 256000; // Max file size in bites
 
 module.exports = {
-    category: "Utility",
     description: "Add emojis without opening any menu's",
     guildOnly: true,
-    aliases: ["createemoji", "aemoji", "cemoji"],
     requiredPermissions: ["MANAGE_EMOJIS"],
-    callback: ({ message, args, text }) => {
+    execute(message, args) {
+        const text = args.join(" ");
         const image = message.attachments.first();
 
         if (!image) return message.channel.send("Please attach a image to your message!");

@@ -1,13 +1,10 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "Misc",
-    cooldown: "3s",
-    minArgs: 1,
+    args: true,
     guildOnly: true,
-    expectedArgs: "[@user] <nickname>",
     description: "Change nicknames",
-    callback: ({ message, args }) => {
+    execute(message, args) {
         let target = message.mentions.members.first() || message.guild.members.cache.find((m) => m.name == args[0]) || message.guild.members.cache.get(args[0]);
 
         if (target) {

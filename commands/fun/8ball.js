@@ -19,12 +19,11 @@ const responses = [
     "Yes – definitely",
     "You may rely on it",
 ];
+
 module.exports = {
-    category: "Fun",
-    minArgs: 1,
-    expectedArgs: "<Question>",
+    args: true,
     description: "I hate this command and everyone who uses it",
-    callback: ({ message }) => {
+    execute(message) {
         const response = responses[Math.floor(Math.random() * responses.length)];
 
         return message.channel.send(`🎱 | ${response}, **${message.author.username}**`);

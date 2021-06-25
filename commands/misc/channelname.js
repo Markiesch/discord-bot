@@ -1,13 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "misc",
-    cooldown: "3s",
     guildOnly: true,
     description: "Change the channel name",
-    aliases: ["channelname", "setchannelname"],
-    requiredPermissions: ["MANAGE_CHANNELS"],
-    callback: ({ message, args }) => {
+    callback(message, args) {
         const noArgs = new MessageEmbed()
             .setColor("#f14948")
             .setDescription("<:failed:818800981001240617> Please provide a name.\n\nUse `-keepemoji` somewhere in your message to keep the current emoji's!");

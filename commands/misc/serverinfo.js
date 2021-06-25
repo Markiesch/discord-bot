@@ -1,8 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "misc",
-    cooldown: "3s",
     guildOnly: true,
     description: "Get information from the guild",
     callback: ({ message, client }) => {

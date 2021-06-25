@@ -1,15 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "Utility",
     description: "Sets the number of messages you can post each second in a specific channel",
-    minArgs: 1,
-    expectedArgs: "<role>",
-    syntaxError: `Incorrect Usage! Use {PREFIX}{COMMAND} {ARGUMENTS}`,
-    aliases: ["toggle-mentionable"],
+    args: true,
     guildOnly: true,
-    requiredPermissions: ["ADMINISTRATOR"],
-    callback: ({ message }) => {
+    expectedArgs: "<role>",
+    execute(message) {
         const role = message.mentions.roles.first();
         const errMessage = "<:failed:818800981001240617> I couldn't make changes to that role.";
 

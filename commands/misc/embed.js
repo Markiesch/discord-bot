@@ -1,11 +1,8 @@
 module.exports = {
-    category: "misc",
-    description: "Removes all messages from an Channel",
     guildOnly: true,
-    minArgs: 2,
-    expextedArgs: "<Channel mention> <JSON>",
-    requiredPermissions: ["ADMINISTRATOR"],
-    callback: ({ message, args }) => {
+    args: true,
+    description: "Send your own embeds using JSON!",
+    execute(message, args) {
         const targetChannel = message.mentions.channels.first() || message.channel;
 
         if (message.mentions.channels.first()) {

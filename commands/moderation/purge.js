@@ -1,14 +1,10 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "Utility",
     description: "Deletes a specific amount of messages in a channel",
-    minArgs: 1,
-    expectedArgs: "<amount>",
-    syntaxError: `Incorrect Usage! Use {PREFIX}{COMMAND} {ARGUMENTS}`,
+    args: true,
     guildOnly: true,
-    requiredPermissions: ["ADMINISTRATOR"],
-    callback: ({ message, args }) => {
+    execute(message, args) {
         const amount = parseInt(args[0]) + 1;
 
         const failMessage = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> Failed to clear **<#${amount}>** messages`);

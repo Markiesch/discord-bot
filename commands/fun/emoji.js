@@ -2,10 +2,9 @@ const Discord = require("discord.js");
 const validSymbols = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 module.exports = {
-    category: "Fun",
-    cooldown: "3s",
+    args: true,
     description: "Makes emoji text, thanks I hate it",
-    callback: ({ message, args }) => {
+    execute(message, args) {
         if (args.includes("--delete")) {
             const index = args.indexOf("--delete");
             args.splice(index, 1);

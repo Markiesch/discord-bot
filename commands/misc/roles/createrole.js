@@ -1,13 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "misc",
-    cooldown: "3s",
     guildOnly: true,
-    expectedArgs: "<name>",
     description: "Create a role",
-    requiredPermissions: ["ADMINISTRATOR"],
-    callback: async ({ message, args }) => {
+    execute(message, args) {
         const notFound = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> I couldn't find the role **${args[0]}**`);
 
         if (!role) return message.channel.send(notFound);

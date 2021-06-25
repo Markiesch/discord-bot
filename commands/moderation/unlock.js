@@ -1,12 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    category: "Moderation",
-    description: "Makes sure users cant send messages to the mentioned channel",
-    expectedArgs: "[channel]",
+    description: "Unlocks the mentioned channel",
     guildOnly: true,
-    requiredPermissions: ["ADMINISTRATOR"],
-    callback: ({ message }) => {
+    execute(message) {
         const targetChannel = message.mentions.channels.first() || message.channel;
         const failMessage = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> Failed to unlock **<#${targetChannel.id}>**`);
         const lockedMessage = new MessageEmbed().setColor("#43b581").setDescription(`:unlock: **<#${targetChannel.id}>** has been unlocked`);
