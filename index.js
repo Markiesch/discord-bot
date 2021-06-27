@@ -5,6 +5,16 @@ const prefix = "!";
 const client = new Discord.Client({
     partials: ["MESSAGE", "REACTION"],
 });
+
+// features
+const files = fs.readdirSync("./features");
+
+for (const file of files) {
+    const feature = require(`./features/${file}`);
+    feature(client);
+}
+
+// Commands
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
@@ -28,6 +38,7 @@ client.on("message", (message) => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
+    const text = args.join(" ");
 
     const command = client.commands.get(commandName) || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
@@ -77,7 +88,7 @@ client.on("message", (message) => {
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
     try {
-        command.execute(message, args);
+        command.execute(message, args, text);
     } catch (error) {
         console.error(error);
         message.reply("there was an error trying to execute that command!");
