@@ -1,3 +1,4 @@
+const path = require("path");
 const fs = require("fs");
 const Discord = require("discord.js");
 const prefix = "!";
@@ -18,19 +19,36 @@ for (const file of files) {
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
-const commandFolders = fs.readdirSync("./commands");
+// const commandFolders = fs.readdirSync("./commands");
 
-for (const folder of commandFolders) {
-    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith(".js"));
-    for (const file of commandFiles) {
-        const command = require(`./commands/${folder}/${file}`);
-        const name = command.name || file.split(".").slice(0, -1).join(".");
-        client.commands.set(name, command);
-    }
-}
+// for (const folder of commandFolders) {
+//     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith(".js"));
+//     for (const file of commandFiles) {
+//         const command = require(`./commands/${folder}/${file}`);
+//         const name = command.name || file.split(".").slice(0, -1).join(".");
+//         client.commands.set(name, command);
+//     }
+// }
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
+
+    const readCommands = (dir) => {
+        const files = fs.readdirSync(path.join(__dirname, dir));
+        for (const file of files) {
+            const stat = fs.lstatSync(path.join(__dirname, dir, file));
+
+            if (stat.isDirectory()) {
+                readCommands(path.join(dir, file));
+            } else {
+                const command = require(path.join(__dirname, dir, file));
+                const name = command.name || file.split(".").slice(0, -1).join(".");
+                client.commands.set(name, command);
+            }
+        }
+    };
+
+    readCommands("commands");
 });
 
 client.on("message", (message) => {
