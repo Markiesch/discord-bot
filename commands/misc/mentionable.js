@@ -5,6 +5,7 @@ module.exports = {
     args: true,
     guildOnly: true,
     expectedArgs: "<role>",
+    permissions: "ADMINISTRATOR",
     execute(message) {
         const role = message.mentions.roles.first();
         const errMessage = "<:failed:818800981001240617> I couldn't make changes to that role.";

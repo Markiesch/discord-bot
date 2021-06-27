@@ -6,7 +6,7 @@ module.exports = {
     cooldown: "3s",
     expectedArgs: "<role>",
     description: "Deleted the mentioned role",
-    requiredPermissions: ["ADMINISTRATOR"],
+    permissions: "ADMINISTRATOR",
     callback: async ({ message, args }) => {
         const role = message.mentions.roles.first() || message.guild.roles.cache.find((role) => role.name == args[0]) || message.guild.roles.cache.get(args[0]);
 

@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     guildOnly: true,
     description: "Change the channel name",
+    permissions: "ADMINISTRATOR",
     callback(message, args) {
         const noArgs = new MessageEmbed()
             .setColor("#f14948")

@@ -2,6 +2,7 @@ module.exports = {
     guildOnly: true,
     args: true,
     description: "Send your own embeds using JSON!",
+    permissions: "EMBED_LINKS",
     execute(message, args) {
         const targetChannel = message.mentions.channels.first() || message.channel;
 

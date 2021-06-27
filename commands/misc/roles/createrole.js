@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     guildOnly: true,
     description: "Create a role",
+    permissions: "ADMINISTRATOR",
     execute(message, args) {
         const notFound = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> I couldn't find the role **${args[0]}**`);
 

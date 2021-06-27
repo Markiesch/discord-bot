@@ -5,7 +5,7 @@ const maxSize = 256000; // Max file size in bites
 module.exports = {
     description: "Add emojis without opening any menu's",
     guildOnly: true,
-    requiredPermissions: ["MANAGE_EMOJIS"],
+    permissions: "MANAGE_EMOJIS",
     execute(message, args) {
         const text = args.join(" ");
         const image = message.attachments.first();

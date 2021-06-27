@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     guildOnly: true,
-    requiredPermissions: ["MANAGE_GUILD"],
+    permissions: "MANAGE_GUILD",
     execute(message) {
         const image = message.attachments.first();
         if (!image) return message.channel.send("Please attach a image to your message!");
