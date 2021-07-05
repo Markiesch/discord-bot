@@ -4,6 +4,7 @@ module.exports = {
     description: "Deletes a specific amount of messages in a channel",
     args: true,
     guildOnly: true,
+    permissions: "MANAGE_MESSAGES",
     execute(message, args) {
         const amount = parseInt(args[0]) + 1;
 

@@ -2,6 +2,7 @@ module.exports = {
     description: "Sets the number seconds you need to wait before users can send a message again",
     args: true,
     guildOnly: true,
+    permissions: "MANAGE_CHANNELS",
     execute(message, args) {
         const channel = message.mentions.channels.first() || message.channel;
 
