@@ -4,6 +4,10 @@ const channels = {
         id: "858758788965990421",
         msg: "Welcome {user.name} to {guild}, your are the #{guild.members} member",
     },
+    "861252950902964274": {
+        id: "861252951359619082",
+        msg: "Welcome {user.name} to {guild}, your are the #{guild.members} member",
+    },
 };
 
 module.exports = (client) => {
