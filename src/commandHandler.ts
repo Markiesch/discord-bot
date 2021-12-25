@@ -32,7 +32,7 @@ export default function createCommands(client: Client) {
 
     try {
       const command = new commands[commandName]();
-      command.callback(message, ...args);
+      command.execute(message, ...args);
     } catch (error) {
       console.log(error);
     }
