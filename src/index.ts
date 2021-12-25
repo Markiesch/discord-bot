@@ -1,6 +1,6 @@
 import Discord, { Intents } from "discord.js";
 import dotenv from "dotenv";
-import createFiles from "./commandHandler";
+import createCommands from "./commandHandler";
 
 dotenv.config();
 
@@ -9,9 +9,8 @@ const client = new Discord.Client({
 });
 
 client.on("ready", () => {
-  console.log("Ready!");
-
-  createFiles(client);
+  console.log("Successfully logged in as " + client.user?.tag);
+  createCommands(client);
 });
 
 client.login(process.env.TOKEN);
