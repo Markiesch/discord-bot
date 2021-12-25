@@ -10,7 +10,7 @@ interface command {
 export default function createCommands(client: Client) {
   const commands: command = {};
 
-  const commandFiles = getFiles("./commands", suffix);
+  const commandFiles = getFiles(`${__dirname}/commands`, suffix);
   console.log(commandFiles);
 
   for (const command of commandFiles) {
@@ -34,7 +34,8 @@ export default function createCommands(client: Client) {
     if (!commands[commandName]) return;
 
     try {
-      commands[commandName].callback(message, ...args);
+      const command = new commands[commandName]();
+      command.callback(message, ...args);
     } catch (error) {
       console.log(error);
     }
