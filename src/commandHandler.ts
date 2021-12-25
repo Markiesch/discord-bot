@@ -11,7 +11,6 @@ export default function createCommands(client: Client) {
   const commands: command = {};
 
   const commandFiles = getFiles(`${__dirname}/commands`, suffix);
-  console.log(commandFiles);
 
   for (const command of commandFiles) {
     let commandFile = require(command);
@@ -22,8 +21,6 @@ export default function createCommands(client: Client) {
 
     commands[commandName.toLowerCase()] = commandFile;
   }
-
-  console.log(commands);
 
   client.on("messageCreate", (message) => {
     if (message.author.bot || !message.content.startsWith("!")) return;
