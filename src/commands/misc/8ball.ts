@@ -26,7 +26,7 @@ const responses = [
 export default class clap extends command {
   description = "I hate this command and everyone who uses it";
 
-  execute(message: Message, ...args: string[]) {
+  execute(message: Message) {
     const response = responses[Math.floor(Math.random() * responses.length)];
     return message.channel.send(`🎱 | ${response}, **${message.author.username}**`);
   }
