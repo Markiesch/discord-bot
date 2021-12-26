@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import command from "./command";
+import command from "../command";
 
 const responses = [
   "As I see it, yes",

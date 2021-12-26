@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import command from "./command";
+import command from "../command";
 
 export default class clap extends command {
   description = "makes 👏 your 👏 messages 👏 look 👏 like 👏 this";
