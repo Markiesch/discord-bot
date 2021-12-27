@@ -1,8 +1,9 @@
-import { GuildChannel, Message, MessageEmbed } from "discord.js";
+import { GuildChannel, MessageEmbed } from "discord.js";
 import { ICommand } from "../../types/types";
 
-export default <ICommand>{
+const command: ICommand = {
   description: "Unlocks the mentioned channel",
+  permissions: ["MANAGE_CHANNELS"],
 
   execute({ message }): void {
     if (!message.guildId) return;
@@ -21,3 +22,5 @@ export default <ICommand>{
     }
   },
 };
+
+export default command;

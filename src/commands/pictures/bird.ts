@@ -1,8 +1,8 @@
-import { Message, MessageEmbed } from "discord.js";
 import axios from "axios";
+import { MessageEmbed } from "discord.js";
 import { ICommand } from "../../types/types";
 
-export default <ICommand>{
+const command: ICommand = {
   description: "Gives you a random bird picture god I fucking hate bots",
 
   async execute({ message }) {
@@ -17,3 +17,5 @@ export default <ICommand>{
     }
   },
 };
+
+export default command;

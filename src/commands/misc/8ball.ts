@@ -22,11 +22,13 @@ const responses = [
   "You may rely on it",
 ];
 
-export default <ICommand>{
+const command: ICommand = {
   description: "I hate this command and everyone who uses it",
 
   execute({ message }) {
     const response = responses[Math.floor(Math.random() * responses.length)];
-    return message.channel.send(`🎱 | ${response}, **${message.author.username}**`);
+    message.channel.send(`🎱 | ${response}, **${message.author.username}**`);
   },
 };
+
+export default command;

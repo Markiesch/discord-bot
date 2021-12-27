@@ -1,6 +1,6 @@
 import { ICommand } from "../../types/types";
 
-export default <ICommand>{
+const command: ICommand = {
   description: "makes 👏 your 👏 messages 👏 look 👏 like 👏 this",
 
   execute({ message, args }) {
@@ -8,3 +8,5 @@ export default <ICommand>{
     message.reply(args.join(" :clap: "));
   },
 };
+
+export default command;
