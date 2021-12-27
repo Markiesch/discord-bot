@@ -1,8 +1,8 @@
 import { GuildChannel, Message, MessageEmbed } from "discord.js";
-import command from "../command";
+import { ICommand } from "../../types/types";
 
-export default class lock extends command {
-  description = "Locks the mentioned channel";
+export default <ICommand>{
+  description: "Locks the mentioned channel",
 
   execute(message: Message): void {
     const targetChannel = (message.mentions.channels.first() || message.channel) as GuildChannel;
@@ -18,5 +18,5 @@ export default class lock extends command {
     } catch (error) {
       message.reply({ embeds: [failMessage] });
     }
-  }
-}
+  },
+};

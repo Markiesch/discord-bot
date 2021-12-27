@@ -1,9 +1,9 @@
 import { Message, MessageEmbed } from "discord.js";
-import command from "../command";
 import axios from "axios";
+import { ICommand } from "../../types/types";
 
-export default class bird extends command {
-  description = "Gives you a random bird picture god I fucking hate bots";
+export default <ICommand>{
+  description: "Gives you a random bird picture god I fucking hate bots",
 
   async execute(message: Message) {
     try {
@@ -15,5 +15,5 @@ export default class bird extends command {
     } catch (error) {
       if (error instanceof Error) console.log(error.message);
     }
-  }
-}
+  },
+};

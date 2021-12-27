@@ -31,7 +31,7 @@ export default function createCommands(client: Client) {
     if (!commands[commandName]) return;
 
     try {
-      const command = new commands[commandName]();
+      const command = commands[commandName];
       command.execute(message, ...args);
     } catch (error) {
       console.log(error);

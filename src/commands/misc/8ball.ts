@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import command from "../command";
+import { ICommand } from "../../types/types";
 
 const responses = [
   "As I see it, yes",
@@ -23,11 +23,11 @@ const responses = [
   "You may rely on it",
 ];
 
-export default class clap extends command {
-  description = "I hate this command and everyone who uses it";
+export default <ICommand>{
+  description: "I hate this command and everyone who uses it",
 
   execute(message: Message) {
     const response = responses[Math.floor(Math.random() * responses.length)];
     return message.channel.send(`🎱 | ${response}, **${message.author.username}**`);
-  }
-}
+  },
+};
