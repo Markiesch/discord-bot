@@ -4,5 +4,5 @@ export interface ICommand {
   name?: string;
   alias?: string[] | string;
   description: string;
-  execute: (Message: Message, ...args: string[]) => void;
+  execute: ({ message, args }: { message: Message; args: string[] }) => void;
 }

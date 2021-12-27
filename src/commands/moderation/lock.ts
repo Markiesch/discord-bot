@@ -1,10 +1,10 @@
-import { GuildChannel, Message, MessageEmbed } from "discord.js";
+import { GuildChannel, MessageEmbed } from "discord.js";
 import { ICommand } from "../../types/types";
 
 export default <ICommand>{
   description: "Locks the mentioned channel",
 
-  execute(message: Message): void {
+  execute({ message }): void {
     const targetChannel = (message.mentions.channels.first() || message.channel) as GuildChannel;
     const failMessage = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> Failed to lock **<#${targetChannel.id}>**`);
     const lockedMessage = new MessageEmbed().setColor("#43b581").setDescription(`:lock: **<#${targetChannel.id}>** has been locked`);

@@ -5,7 +5,7 @@ import { ICommand } from "../../types/types";
 export default <ICommand>{
   description: "Gives you a random dog picture",
 
-  async execute(message: Message) {
+  async execute({ message }) {
     try {
       const res = await axios.get("https://dog.ceo/api/breed/pug/images/random");
       const image = res.data.message;

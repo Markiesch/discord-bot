@@ -1,4 +1,3 @@
-import { Message } from "discord.js";
 import { ICommand } from "../../types/types";
 
 const responses = [
@@ -26,7 +25,7 @@ const responses = [
 export default <ICommand>{
   description: "I hate this command and everyone who uses it",
 
-  execute(message: Message) {
+  execute({ message }) {
     const response = responses[Math.floor(Math.random() * responses.length)];
     return message.channel.send(`🎱 | ${response}, **${message.author.username}**`);
   },

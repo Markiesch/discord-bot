@@ -4,7 +4,7 @@ import { ICommand } from "../../types/types";
 export default <ICommand>{
   description: "Unlocks the mentioned channel",
 
-  execute(message: Message): void {
+  execute({ message }): void {
     if (!message.guildId) return;
     const targetChannel = (message.mentions.channels.first() || message.channel) as GuildChannel;
     const failMessage = new MessageEmbed().setColor("#f14948").setDescription(`<:failed:818800981001240617> Failed to unlock **<#${targetChannel.id}>**`);
