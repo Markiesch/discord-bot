@@ -1,10 +1,11 @@
-import { Client } from "discord.js";
+import { Client, GuildMember, PermissionString, TextChannel } from "discord.js";
 import getFiles from "./getFiles";
+import { ICommand } from "./types/types";
 
 const suffix = ".ts";
 
 interface command {
-  [key: string]: any;
+  [key: string]: ICommand;
 }
 
 export default function createCommands(client: Client) {
@@ -28,13 +29,28 @@ export default function createCommands(client: Client) {
     const args = message.content.slice(1).split(/ +/);
     const commandName = args.shift()!.toLowerCase();
 
-    if (!commands[commandName]) return;
+    const command = commands[commandName];
+    if (!command) return;
+
+    if (command.permissions && message.member && !hasPermissions(message.member, command.permissions)) return;
+
+    const { channel } = message;
+    if (channel.type !== "GUILD_TEXT") return;
 
     try {
-      const command = commands[commandName];
-      command.execute({ message, ...args });
+      command.execute({ channel, message, args, client });
     } catch (error) {
       console.log(error);
     }
   });
+}
+
+function hasPermissions(user: GuildMember, permissions: PermissionString | PermissionString[]): boolean {
+  if (!Array.isArray(permissions)) permissions = [permissions];
+
+  for (const permission of permissions) {
+    if (!user.permissions.has(permission)) return false;
+  }
+
+  return true;
 }
