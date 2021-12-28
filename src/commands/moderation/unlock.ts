@@ -3,7 +3,7 @@ import { ICommand } from "../../types/types";
 
 const command: ICommand = {
   description: "Unlocks the mentioned channel",
-  permissions: ["MANAGE_CHANNELS"],
+  permissions: "MANAGE_CHANNELS",
 
   execute({ message }): void {
     if (!message.guildId) return;

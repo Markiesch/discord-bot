@@ -3,7 +3,7 @@ import { ICommand } from "../../types/types";
 
 const command: ICommand = {
   description: "Locks the mentioned channel",
-  permissions: ["MANAGE_CHANNELS"],
+  permissions: "MANAGE_CHANNELS",
 
   execute({ message }): void {
     const targetChannel = (message.mentions.channels.first() || message.channel) as GuildChannel;
